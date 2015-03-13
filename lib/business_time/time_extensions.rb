@@ -106,6 +106,8 @@ module BusinessTime
       def change_business_time time, hour, min=0, sec=0
         # don't change the timezone of the time object passed in.
         # Assume it is in the correct timezone desired
+        time = time.to_time unless time.kind_of?(Time)
+
         time.change(:hour => hour, :min => min, :sec => sec)
       end
     end
