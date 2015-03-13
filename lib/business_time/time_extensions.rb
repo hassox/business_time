@@ -104,11 +104,9 @@ module BusinessTime
       private
 
       def change_business_time time, hour, min=0, sec=0
-        if Time.zone
-          time.in_time_zone(Time.zone).change(:hour => hour, :min => min, :sec => sec)
-        else
-          time.change(:hour => hour, :min => min, :sec => sec)
-        end
+        # don't change the timezone of the time object passed in.
+        # Assume it is in the correct timezone desired
+        time.change(:hour => hour, :min => min, :sec => sec)
       end
     end
 
